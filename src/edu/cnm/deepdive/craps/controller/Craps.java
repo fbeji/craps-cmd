@@ -4,9 +4,12 @@ import edu.cnm.deepdive.craps.model.Game;
 import edu.cnm.deepdive.craps.model.State;
 import java.util.Random;
 import java.util.Scanner;
+import org.apache.commons.rng.simple.JDKRandomBridge;
+import org.apache.commons.rng.simple.RandomSource;
 
 public class Craps {
 
+  public static final long[] LONG_ARRAY = RandomSource.createLongArray(312);
   private Random rng;
   private Game game;// looking into our jar file
 
@@ -32,7 +35,7 @@ public class Craps {
     }
   }
   public Craps() {
-      rng = new Random();
+      rng = new JDKRandomBridge(RandomSource.MT_64, LONG_ARRAY);
       game = new Game(rng);
 
     }
